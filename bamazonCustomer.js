@@ -8,8 +8,9 @@ var connection = mysql.createConnection({
     port: 3306,
     user: "root",
     password: "SR1024xo",
-    database: "bamazon"
+    database: "bamazon2"
 });
+var bamazon = "bamazon2";
 
 connection.connect(function (err) {
     if (err) throw err;
@@ -18,8 +19,10 @@ connection.connect(function (err) {
 });
 
 function afterCConnection() {
-    connection.query("SELECT * FROM " + )
-}
+    connection.query("SELECT * FROM " + bamazon (err, res) {
+        if (err) throw err;
+        console.log(res);
+});
 function promptCustomer(res) {
     inquirer.prompt([{
         type: "input",
