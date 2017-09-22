@@ -8,27 +8,37 @@ var connection = mysql.createConnection({
     port: 3306,
     user: "root",
     password: "SR1024xo",
-    database: "bamazon2"
+    database: "bamazon2_db"
 });
 var bamazon = "bamazon2";
 
 connection.connect(function (err) {
     if (err) throw err;
     console.log('connection successful!');
-    afterCConnection();
+    afterConnection();
+
 });
 
-function afterCConnection() {
-    connection.query("SELECT * FROM " + bamazon (err, res) {
+function afterConnection() {
+    connection.query("SELECT * FROM " + bamazon, function (err, res) {
         if (err) throw err;
         console.log(res);
-});
+        // create table
+        promptCustomer();
+    });
+}
 function promptCustomer(res) {
     inquirer.prompt([{
         type: "input",
         name: "choice",
-        message: "What is the id of the product you would like to purchase? [Quit with Q]"
-    }]).then(function (answer) {
-    // add some more things heir
+        message: "What is the id of the product you would like to purchase?"
+    }]).then(function(answer) {
+            function getProductId(idNumber) {
+                connection.query("SELECT * FROM bamazon WHERE ?", {id: idNumber}, function(err, res) {
+                    if(err) throw err;
+                    console.log(res);
+                });
+            }
     });
+
 }

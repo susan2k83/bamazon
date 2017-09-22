@@ -14,6 +14,6 @@ PRIMARY KEY(id)
  SELECT * FROM bamazon2;
  
  INSERT INTO bamazon2(product_name, department_name, price, stock)
- VALUES ("Beach Chair", "Seasonal", "15.00", "20");
+ VALUES ("hat", "Seasonal", "3.00", "15");
  
  
