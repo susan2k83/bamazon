@@ -46,8 +46,22 @@ function promptCustomer(res) {
                 connection.query("SELECT * FROM bamazon  WHERE ?", {id: idNumber}, function(err, res) {
                     if(err) throw err;
                     console.log(res);
+                    userInput();
                 });
             }
     });
+// the code stops running after the first prompt/message...and I included at least one more prompt/function userInput to see if it would continue through the next message, which it did not. 
+    function userInput() {
+        inquirer
+            .prompt([
+                {
+                    name: "id",
+                    type: "input",
+                    message: "Please confirm the id of the item you would like to purchase. "
+                    
+                },
+                
+            ])
+    }
 
 }
