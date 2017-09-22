@@ -1,6 +1,8 @@
 var mysql = require("mysql");
 var inquirer = require("inquirer");
-require('console.table');
+var table = require("cli-table");
+// require('console.table');
+require('cli-table');
 
 // Configuration.. Boiler Plate Code
 var connection = mysql.createConnection({
@@ -23,7 +25,14 @@ function afterConnection() {
     connection.query("SELECT * FROM " + bamazon, function (err, res) {
         if (err) throw err;
         console.log(res);
-        // create table
+        // create table  ..... the code below does not result in a table, just errors
+        
+        // console.log(table.toString());
+        // for (var i = 0; i < res.length; i++) {
+        //     table.push([res[i].id, res[i].product_name, res[i].department_name, res[i].price, res[i].stock]);
+        // }
+        // console.log("................................");
+        
         promptCustomer();
     });
 }
@@ -34,7 +43,7 @@ function promptCustomer(res) {
         message: "What is the id of the product you would like to purchase?"
     }]).then(function(answer) {
             function getProductId(idNumber) {
-                connection.query("SELECT * FROM bamazon WHERE ?", {id: idNumber}, function(err, res) {
+                connection.query("SELECT * FROM bamazon  WHERE ?", {id: idNumber}, function(err, res) {
                     if(err) throw err;
                     console.log(res);
                 });
